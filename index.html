@@ -2,13 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
 </head>
 
 <body>
+
+  <div class="container">
+    <h1 class="title">А где я сейчас</h1>
+    <div class="container__wrapper">
+
+      <form action="" class="form">
+        <label for="latitude">Latitude</label>
+        <input type="number" name="latitude" id="latitude">
+        <label for="longitude">Longitude</label>
+        <input type="number" name="longitude" id="longitude">
+        <button type="submit">Получить координаты</button>
+      </form>
+
+      <div class="answer">
+        <div class="country">
+          <div class="country__header">
+            <img src="./img/uk-flag.webp" alt="" class="country__flag">
+            <h2 class="country__name">United Kingdom of Great Britain and Northern Ireland</h2>
+          </div>
+          <div class="country__body">
+            <p class="country__text">Lorem ipsum dolor sit amet.</p>
+            <p class="country__text">Lorem ipsum dolor sit amet.</p>
+            <p class="country__text">Lorem ipsum dolor sit amet.</p>
+            <p class="country__text">Lorem ipsum dolor sit amet.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 </body>
 
