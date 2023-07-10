@@ -18,14 +18,14 @@
       <form action="" class="form">
         <h2 class="form__title title__h2">Введите координаты</h2>
         <label for="latitude" class="form__label">Latitude</label>
-        <input type="number" name="latitude" id="latitude" class="form__input">
+        <input type="number" step="any" name="latitude" id="latitude" class="form__input" required>
         <label for="longitude" class="form__label">Longitude</label>
-        <input type="number" name="longitude" id="longitude" class="form__input">
+        <input type="number" step="any" name="longitude" id="longitude" class="form__input" required>
         <button type="submit" class="form__submit">Получить координаты</button>
       </form>
 
       <div class="answer">
-        <div class="country">
+        <div class="country hidden">
           <div class="country__header">
             <img src="./img/uk-flag.webp" alt="" class="country__flag">
             <h2 class="title__h2">United Kingdom of Great Britain and Northern Ireland</h2>
@@ -37,11 +37,21 @@
             <p class="country__text">Lorem ipsum dolor sit amet.</p>
           </div>
         </div>
+        <div class="error hidden">
+          <h2 class="error__title">Request Throttled. Over Rate limit: up to 0 per sec. See geocode.xyz/pricing</h2>
+        </div>
+        <div class="place">
+          <h2 class="place__title">
+            Вы находитесь в<br>
+            Rome, Italy
+          </h2>
+          <button type="button" class="place__button">Подробнее</button>
+        </div>
       </div>
 
     </div>
   </div>
-
+  <script type="module" src="./js/geocode.js"></script>
 </body>
 
 </html>
