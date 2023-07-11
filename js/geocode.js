@@ -34,10 +34,21 @@ async function createPlaceAnswer() {
 
 function renderPosition(data) {
   const answer = document.querySelector('.answer')
-  const lowerCity = data.city ? data.city.charAt(0).toUpperCase() + data.city.slice(1).toLowerCase() : ''
-  const country = data.country ? data.country : ''
-  const position = [lowerCity, country].length ? [lowerCity, country].filter(str => str.length > 0).join(',') : 'неизвестном месте'
-  const btnHTML = data.prov ? `<button type="button" class="place__button" data-country="${data.country}" id="country-alpha">Подробнее</button>` : ''
+
+  let country
+  let lowerCity
+  console.log(data)
+  if (data.standard) {
+    lowerCity = data.standard.city ? data.standard.city.charAt(0).toUpperCase() + data.standard.city.slice(1).toLowerCase() : ''
+    country = data.standard.countryname ? data.standard.countryname : ''
+  } else {
+    lowerCity = data.city ? data.city.charAt(0).toUpperCase() + data.city.slice(1).toLowerCase() : ''
+    country = data.country ? data.country : ''
+  }
+
+  const position = [lowerCity, country].length ? [lowerCity, country].filter(str => str.length > 0).join(', ') : 'неизвестном месте'
+  const btnHTML = country ? `<button type="button" class="place__button" data-country="${country}" id="country-alpha">Подробнее</button>` : ''
+
   const html = `
         <div class="place">
           <h2 class="place__title">

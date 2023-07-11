@@ -25,7 +25,7 @@ function renderCountryInfo(country) {
   let currency
   let languages
   if (country.currencies) currency = Array.from(Object.keys(country.currencies), item => `${country.currencies[item].name} - ${country.currencies[item].symbol}`).join(',')
-  if (country.languages) languages = Object.values(country.languages).join(',')
+  if (country.languages) languages = Object.values(country.languages).join(', ')
   const html = `
       <div class="country">
         <div class="country__header">
