@@ -1,6 +1,7 @@
 import { getToken } from './secret.js'
 
 async function getLocation(lat, long) {
+  console.log(`https://geocode.xyz/${lat},${long}?geoit=json&auth=${getToken()}`)
   const place = await fetch(`https://geocode.xyz/${lat},${long}?geoit=json&auth=${getToken()}`)
     .then(data => data.json())
     .then(data => {
@@ -67,7 +68,7 @@ function renderError(error) {
         <h2 class="error__title">${error}</h2>
       </div>
   `
-  answer.insertAdjacentHTML = html
+  answer.innerHTML = html
 }
 
 

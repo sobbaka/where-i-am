@@ -55,5 +55,4 @@ async function getAndRenderCountry(alpha) {
   renderCountryInfo(data[0])
 }
 
-
 export { getAndRenderCountry, getCountryAlpha }
