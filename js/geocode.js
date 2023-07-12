@@ -6,7 +6,6 @@ async function getLocation(lat, long) {
     .then(data => {
       if (data.hasOwnProperty('error')) {
         const errorMessage = data.error.message ? data.error.message : data.error.description
-        console.log(errorMessage)
         throw new Error(errorMessage)
       }
       return data
@@ -37,7 +36,6 @@ function renderPosition(data) {
 
   let country
   let lowerCity
-  console.log(data)
   if (data.standard) {
     lowerCity = data.standard.city ? data.standard.city.charAt(0).toUpperCase() + data.standard.city.slice(1).toLowerCase() : ''
     country = data.standard.countryname ? data.standard.countryname : ''
@@ -69,7 +67,7 @@ function renderError(error) {
         <h2 class="error__title">${error}</h2>
       </div>
   `
-  answer.innerHTML = html
+  answer.insertAdjacentHTML = html
 }
 
 
@@ -83,7 +81,3 @@ function renderAnswer(data) {
 
 export { createPlaceAnswer, renderError };
 
-
-// getLocation(51.50354, -0.12768)
-// await getLocation(51.50354, -0.12768)
-// await getLocation(41.70377, 44.84219)

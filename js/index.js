@@ -8,8 +8,25 @@ searchForm.addEventListener('submit', async (event) => {
   const countryBtn = await document.querySelector('#country-alpha')
   if (countryBtn) {
     countryBtn.addEventListener('click', async () => {
-      const alpha = await getCountryAlpha(countryBtn)
-      await getAndRenderCountry(alpha)
+      let country = document.querySelector('.country')
+      const place = document.querySelector('.place')
+      if (!country) {
+        const alpha = await getCountryAlpha(countryBtn)
+        await getAndRenderCountry(alpha)
+        country = document.querySelector('.country')
+        toggleHiddenClass([place, country])
+        const backToPositionBtn = document.querySelector('#country-back')
+        backToPositionBtn.addEventListener('click', () => {
+          toggleHiddenClass([place, country])
+        })
+      } else {
+        toggleHiddenClass([place, country])
+      }
+
     })
   }
 })
+
+function toggleHiddenClass(args) {
+  args.forEach(item => item.classList.toggle('hidden'))
+}

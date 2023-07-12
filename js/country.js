@@ -27,20 +27,22 @@ function renderCountryInfo(country) {
   if (country.currencies) currency = Array.from(Object.keys(country.currencies), item => `${country.currencies[item].name} - ${country.currencies[item].symbol}`).join(',')
   if (country.languages) languages = Object.values(country.languages).join(', ')
   const html = `
-      <div class="country">
+      <div class="country hidden">
         <div class="country__header">
           <img src="${country.flags.png}" alt="" class="country__flag">
           <h2 class="title__h2">${country.name.official}</h2>
         </div>
         <div class="country__body">
-          <p class="country__text ${country.capital ? '' : 'hidden'}">Capital: ${country.capital}</p>
-          <p class="country__text ${country.languages ? '' : 'hidden'}">Languages: ${languages}</p>
-          <p class="country__text ${currency ? '' : 'hidden'}">Currency: ${currency}</p>
-          <p class="country__text ${country.population ? '' : 'hidden'}">Population: ${country.population}</p>
+          <p class="country__text ${country.capital ? '' : 'hidden'}">🏙️ Capital: ${country.capital}</p>
+          <p class="country__text ${country.languages ? '' : 'hidden'}">🔈 Languages: ${languages}</p>
+          <p class="country__text ${currency ? '' : 'hidden'}">💵 Currency: ${currency}</p>
+          <p class="country__text ${country.population ? '' : 'hidden'}">🧑‍🤝‍🧑 Population: ${country.population}</p>
         </div>
+        <div class="country__footer"><button type="button" class="place__button" id="country-back">Назад</button></div>
       </div>
+
     `
-  answer.innerHTML = html
+  answer.insertAdjacentHTML('beforeend', html)
 }
 
 
@@ -52,5 +54,6 @@ async function getAndRenderCountry(alpha) {
   }
   renderCountryInfo(data[0])
 }
+
 
 export { getAndRenderCountry, getCountryAlpha }
