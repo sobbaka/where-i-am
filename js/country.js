@@ -19,27 +19,59 @@ async function getCountryData(alpha) {
   return country
 }
 
+async function loadImage(url) {
+  try {
+    // Load the image
+    const response = await fetch(url);
+    const blob = await response.blob();
 
-function renderCountryInfo(country) {
+    // Create an image element
+    const image = new Image();
+    image.src = URL.createObjectURL(blob);
+
+    // Wait for the image to load
+    await new Promise((resolve, reject) => {
+      image.onload = resolve;
+      image.onerror = reject;
+    });
+
+    return image.src
+
+  } catch (error) {
+    console.error('Error loading image:', error);
+  }
+}
+
+
+async function renderCountryInfo(country) {
   const answer = document.querySelector('.answer')
   let currency
   let languages
   if (country.currencies) currency = Array.from(Object.keys(country.currencies), item => `${country.currencies[item].name} - ${country.currencies[item].symbol}`).join(',')
   if (country.languages) languages = Object.values(country.languages).join(', ')
+
+  const flag = await loadImage(country.flags.png)
+
   const html = `
       <div class="country hidden">
-        <div class="country__header">
-          <img src="${country.flags.png}" alt="" class="country__flag">
-          <h2 class="title__h2">${country.name.official}</h2>
-        </div>
-        <div class="country__body">
-          <p class="country__text ${country.capital ? '' : 'hidden'}">🏙️ Capital: ${country.capital}</p>
-          <p class="country__text ${country.languages ? '' : 'hidden'}">🔈 Languages: ${languages}</p>
-          <p class="country__text ${currency ? '' : 'hidden'}">💵 Currency: ${currency}</p>
-          <p class="country__text ${country.population ? '' : 'hidden'}">🧑‍🤝‍🧑 Population: ${country.population}</p>
-        </div>
-        <div class="country__footer"><button type="button" class="place__button" id="country-back">Назад</button></div>
+      <div class="country__header">
+        <img src="${flag}" alt="" class="country__flag">
+        <h2 class="title__h2">${country.name.official}</h2>
       </div>
+      <div class="country__body">
+        <div class="country__row ${country.capital ? '' : 'hidden'}"><span class="country__sticker">🏙️</span><span class="country__text">Capital:
+        ${country.capital}</span></div>
+        <div class="country__row ${country.languages ? '' : 'hidden'}"><span class="country__sticker sticker-lang">🔈</span><span
+            class="country__text">Languages: ${languages}</span></div>
+        <div class="country__row ${currency ? '' : 'hidden'}"><span class="country__sticker">💵</span><span class="country__text">Currency:
+        ${currency}</span></div>
+        <div class="country__row ${country.population ? '' : 'hidden'}"><span class="country__sticker">🧑‍🤝‍🧑</span><span
+            class="country__text">Population: ${country.population}</span></div>
+      </div>
+      <div class="country__footer"><button type="button" class="place__button button"
+          id="country-back">Назад</button>
+      </div>
+    </div>
 
     `
   answer.insertAdjacentHTML('beforeend', html)
@@ -52,7 +84,7 @@ async function getAndRenderCountry(alpha) {
     renderError(data.text)
     return
   }
-  renderCountryInfo(data[0])
+  await renderCountryInfo(data[0])
 }
 
 export { getAndRenderCountry, getCountryAlpha }
