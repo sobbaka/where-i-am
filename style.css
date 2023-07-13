@@ -11,7 +11,6 @@ body {
 }
 
 .container__wrapper {
-
   display: flex;
   gap: 40px;
   justify-content: center;
@@ -27,11 +26,18 @@ body {
   padding: 10px 5px;
   border: 1px solid #d5d3d3;
   border-radius: 10px;
+  box-shadow: 1px 1px 14px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 285px;
 }
 
 .form__title {}
 
-.title__h2 {}
+.title__h2 {
+  text-align: center;
+}
 
 .form__label {
   display: block;
@@ -41,7 +47,10 @@ body {
 .form__input {
   margin-bottom: 30px;
   padding: 3px;
-  width: 97%;
+  width: 130px;
+  text-align: center;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
 }
 
 .form__input:last-child {
@@ -57,24 +66,19 @@ body {
   width: 360px;
   border: 1px solid #d5d3d3;
   border-radius: 10px;
+  box-shadow: 1px 1px 14px 2px rgba(0, 0, 0, 0.2);
+  padding: 30px 5px;
 }
 
-.answer {
-  padding: 10px 5px;
-}
-
-.country {}
-
-.country__header {
+/* .country__header {
   display: flex;
   column-gap: 10px;
   align-items: center;
 }
 
 .country__flag {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
+  max-width: 150px;
+  max-height: 100px;
 }
 
 .country__name {}
@@ -83,7 +87,16 @@ body {
   padding: 0 20px;
 }
 
-.country__text {}
+.country__footer {
+  display: flex;
+  justify-content: center;
+}
+
+.country-back {
+  display: block;
+}
+
+.country__text {} */
 
 .error {
   display: flex;
@@ -92,19 +105,80 @@ body {
   height: 100%;
 }
 
+.error__title {
+  text-align: center;
+}
+
+.start-message {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.start-message__title {
+  text-align: center;
+}
+
 .place {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 35px;
 }
 
 .place__title {
   text-align: center;
 }
 
-.place__button {}
+.place__footer {
+  display: flex;
+  justify-content: center;
+}
+
+.country__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.country__flag {
+  max-height: 150px;
+}
+
+.country__row {
+  display: flex;
+  gap: 10px;
+  padding: 0px 25px 15px;
+}
+
+.country__sticker {
+  display: block;
+}
+
+.country__text {
+  display: block;
+}
+
+.sticker-lang {
+  padding-right: 7px;
+}
+
+.button {
+  display: block;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #0a8b2a;
+  color: #fff;
+}
+
+.country__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
 
 .hidden {
   display: none;
