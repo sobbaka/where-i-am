@@ -11,7 +11,7 @@ searchForm.addEventListener('submit', async (event) => {
       let country = document.querySelector('.country')
       const place = document.querySelector('.place')
       if (!country) {
-        const alpha = await getCountryAlpha(countryBtn)
+        const alpha = getCountryAlpha(countryBtn)
         await getAndRenderCountry(alpha)
         country = document.querySelector('.country')
         toggleHiddenClass([place, country])
