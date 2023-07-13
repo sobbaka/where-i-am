@@ -46,7 +46,7 @@ function renderPosition(data) {
   }
 
   const position = [lowerCity, country].length ? [lowerCity, country].filter(str => str.length > 0).join(', ') : 'неизвестном месте'
-  const btnHTML = country ? `<button type="button" class="place__button" data-country="${country}" id="country-alpha">Подробнее</button>` : ''
+  const btnHTML = country ? `<button type="button" class="place__button button" data-country="${country}" id="country-alpha">Подробнее</button>` : ''
 
   const html = `
         <div class="place">
@@ -54,7 +54,10 @@ function renderPosition(data) {
             Вы находитесь в<br>
             ${position}
           </h2>
-            ${btnHTML}
+          <div class="place__footer">
+          ${btnHTML}
+          </div>
+
         </div>
       `
   answer.innerHTML = html
